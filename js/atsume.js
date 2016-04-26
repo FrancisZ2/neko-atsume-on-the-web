@@ -1,6 +1,7 @@
 var bg;
 
 function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
   bg = loadImage('img/bg.png');
 }
 
