@@ -1,4 +1,4 @@
-# Neko Atsume on the Web ### Kristin Ho
+# Neko Atsume on the Web | Kristin Ho
 
 Neko Atsume is a collector-style game made by Hit Point for iOS and Android. The game's core mechanic is placing toys (known as goodies) and treats (or food) to attract various types of stray cats to your yard. Certain cats are attracted to certain toys when certain foods are out. Rare cats are attracted exclusively to one or two toys and are generally harder to lure.
 
