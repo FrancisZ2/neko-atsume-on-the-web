@@ -1,0 +1,88 @@
+html,body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#time {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.day {
+  -webkit-animation: day 10s 1;
+  -moz-animation: day 10s 1;
+  -o-animation: day 10s 1;
+  animation: day 10s 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.dusk {
+  -webkit-animation: dusk 10s 1;
+  -moz-animation: dusk 10s 1;
+  -o-animation: dusk 10s 1;
+  animation: day 10s 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.night {
+  -webkit-animation: night 10s 1;
+  -moz-animation: night 10s 1;
+  -o-animation: night 10s 1;
+  animation: night 10s 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.dawn {
+  -webkit-animation: dawn 10s 1;
+  -moz-animation: dawn 10s 1;
+  -o-animation: dawn 10s 1;
+  animation: dawn 10s 1;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes day {
+  0% { background-color: #e18050; opacity: 0.5; }
+  50% { background-color: #e18050; opacity: 0.25; }
+  100% { background-color: #e18050; opacity: 0; }
+}
+
+@keyframes dusk {
+  0% { background-color: #a15dad; opacity: 0; }
+  50% { background-color: #a15dad; opacity: 0.25; }
+  100% { background-color: #a15dad; opacity: 0.5; }
+}
+
+@keyframes night {
+  0% { background-color: #a15dad; opacity: 0.5; }
+  100% { background-color: #1a1646; opacity: 0.5; }
+}
+
+@keyframes dawn {
+  0% { background-color: #1a1646; opacity: 0.5; }
+  100% { background-color: #e18050; opacity: 0.5; }
+}

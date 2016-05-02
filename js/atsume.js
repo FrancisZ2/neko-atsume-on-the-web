@@ -1,9 +1,9 @@
 var bg, goods = [], cats = [];
 var width, height, cax, caw, cay, cah;
 var wratio, hratio, ratio, myw = 1440, myh = 955, myratio = myw/myh;
-var tloc = [];
-var cloc = [];
-var r = [];
+var tloc = [], cloc = [];
+var r = [], pr = [];
+var fout, fin;
 
 function setup() {
   width = window.innerWidth;
@@ -83,10 +83,33 @@ function setup() {
   cloc.push([(caw * 0.885) + cax, (cah * 0.67) + cay]);      // ginger
   cloc.push([(caw * 0.77) + cax, (cah * 0.48) + cay]);       // conductor whiskers
 
+  // TIME DIV
+  var div = document.getElementById('time');
+  div.style.width = caw + "px";
+  div.style.height = cah + "px";
+  div.style.marginLeft = cax + "px";
+  div.style.marginTop = cay + "px";
+
+  // TIME OF DAY
+  var h = new Date().getHours();
+  div.classList.remove("night","day","dusk","dawn");
+  if (h <= 5 || h >= 20) {
+    div.classList.add("night");
+  } else if (h > 5 && h <= 8) {
+    div.classList.add("dawn");
+  } else if (h > 8 && h <= 17) {
+    div.classList.add("day");
+  } else {
+    div.classList.add("dusk");
+  }
+
   // RANDOM APPEARANCE
   for (var i = 0; i < cloc.length; i++) {
     r.push(Math.round(Math.random(0,1)));
+    pr.push(0);
   }
+  fout = 255, fin = 0;
+  window.setInterval(placement, 30000);
 }
 
 function draw() {
@@ -98,11 +121,28 @@ function draw() {
   }
 
   for (var i = 0; i < cloc.length; i++) {
-    if (r[i] == 1) {
+    if (pr[i] == 1 && r[i] == 1) {
       imageMode(CENTER);
+      image(cats[i],cloc[i][0],cloc[i][1],cats[i].width / wratio,cats[i].height / hratio);
+    } else if (pr[i] == 0 && r[i] == 0) {
+    } else if (pr[i] == 0 && r[i] == 1) {  // FADE IN
+      imageMode(CENTER);
+      tint(255,fin);
+      image(cats[i],cloc[i][0],cloc[i][1],cats[i].width / wratio,cats[i].height / hratio);
+    } else if (pr[i] == 1 && r[i] == 0) {   // FADE OUT
+      imageMode(CENTER);
+      tint(255,fout);
       image(cats[i],cloc[i][0],cloc[i][1],cats[i].width / wratio,cats[i].height / hratio);
     }
   }
+  fout -= 15; fout = Math.max(0, fout);
+  fin += 15; fin = Math.min(255, fin);
 }
 
-// add eventlistener for window resize
+function placement() {
+  for (var i = 0; i < cloc.length; i++) {
+    pr[i] = r[i];
+    r[i] = Math.round(Math.random(0,1));
+  }
+  fout = 255, fin = 0;
+}
