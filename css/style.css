@@ -21,6 +21,20 @@ canvas {
   opacity: 0.5;
 }
 
+#logo {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  text-align: center;
+}
+
+#logo-img {
+  margin: auto;
+  margin-top: 17.5%;
+}
+
 .day {
   -webkit-animation: day 10s 1;
   -moz-animation: day 10s 1;

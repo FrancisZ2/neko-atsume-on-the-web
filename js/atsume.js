@@ -4,8 +4,17 @@ var wratio, hratio, ratio, myw = 1440, myh = 955, myratio = myw/myh;
 var tloc = [], cloc = [];
 var r = [], pr = [];
 var fout, fin;
+var music;
+
+function preload() {
+  music = loadSound('music.mp3');
+}
 
 function setup() {
+  // HIDE LOGO
+  var logo = document.getElementById("logo");
+  logo.style.display = "none";
+
   width = window.innerWidth;
   height = window.innerHeight;
   bg = loadImage('img/bg.png');
@@ -109,6 +118,10 @@ function setup() {
     pr.push(0);
   }
   fout = 255, fin = 0;
+
+  // MUSIC
+  if (music.isLoaded()) { music.loop(); }
+
   window.setInterval(placement, 30000);
 }
 
